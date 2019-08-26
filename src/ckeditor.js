@@ -8,12 +8,11 @@ import ClassicEditorBase from '@ckeditor/ckeditor5-editor-classic/src/classicedi
 
 import Essentials from '@ckeditor/ckeditor5-essentials/src/essentials';
 import UploadAdapter from '@ckeditor/ckeditor5-adapter-ckfinder/src/uploadadapter';
-import Autoformat from '@ckeditor/ckeditor5-autoformat/src/autoformat';
+// import Autoformat from '@ckeditor/ckeditor5-autoformat/src/autoformat';
 import Bold from '@ckeditor/ckeditor5-basic-styles/src/bold';
 import Italic from '@ckeditor/ckeditor5-basic-styles/src/italic';
 import BlockQuote from '@ckeditor/ckeditor5-block-quote/src/blockquote';
 import CKFinder from '@ckeditor/ckeditor5-ckfinder/src/ckfinder';
-import EasyImage from '@ckeditor/ckeditor5-easy-image/src/easyimage';
 import Heading from '@ckeditor/ckeditor5-heading/src/heading';
 import Image from '@ckeditor/ckeditor5-image/src/image';
 import ImageCaption from '@ckeditor/ckeditor5-image/src/imagecaption';
@@ -24,11 +23,20 @@ import Indent from '@ckeditor/ckeditor5-indent/src/indent';
 import Link from '@ckeditor/ckeditor5-link/src/link';
 import List from '@ckeditor/ckeditor5-list/src/list';
 import MediaEmbed from '@ckeditor/ckeditor5-media-embed/src/mediaembed';
+import Mention from '@targetx/ckeditor5-mention/src/mention';
 import Paragraph from '@ckeditor/ckeditor5-paragraph/src/paragraph';
 import PasteFromOffice from '@ckeditor/ckeditor5-paste-from-office/src/pastefromoffice';
 import Table from '@ckeditor/ckeditor5-table/src/table';
 import TableToolbar from '@ckeditor/ckeditor5-table/src/tabletoolbar';
 import TextTransformation from '@ckeditor/ckeditor5-typing/src/texttransformation';
+
+/* TargetX Custom Plugins */
+import Alignment from '@ckeditor/ckeditor5-alignment/src/alignment';
+import Font from '@ckeditor/ckeditor5-font/src/font';
+import IndentBlock from '@ckeditor/ckeditor5-indent/src/indentblock';
+import Highlight from '@ckeditor/ckeditor5-highlight/src/highlight';
+import Strikethrough from '@ckeditor/ckeditor5-basic-styles/src/strikethrough';
+import Underline from '@ckeditor/ckeditor5-basic-styles/src/underline';
 
 export default class ClassicEditor extends ClassicEditorBase {}
 
@@ -36,12 +44,11 @@ export default class ClassicEditor extends ClassicEditorBase {}
 ClassicEditor.builtinPlugins = [
 	Essentials,
 	UploadAdapter,
-	Autoformat,
+	// Autoformat,
 	Bold,
 	Italic,
 	BlockQuote,
 	CKFinder,
-	EasyImage,
 	Heading,
 	Image,
 	ImageCaption,
@@ -52,42 +59,63 @@ ClassicEditor.builtinPlugins = [
 	Link,
 	List,
 	MediaEmbed,
+	Mention,
 	Paragraph,
 	PasteFromOffice,
 	Table,
 	TableToolbar,
-	TextTransformation
+	TextTransformation,
+	// Custom Plugins
+	Alignment,
+	Font,
+	IndentBlock,
+	Highlight,
+	Strikethrough,
+	Underline
 ];
 
 // Editor configuration.
 ClassicEditor.defaultConfig = {
+	fontSize: {
+		options: [
+			'8pt',
+			'9pt',
+			'10pt',
+			'11pt',
+			'12pt',
+			'14pt',
+			'16pt',
+			'18pt',
+			'24pt',
+			'30pt',
+			'36pt',
+			'48pt'
+		]
+	},
 	toolbar: {
 		items: [
+			'alignment',
 			'heading',
 			'|',
 			'bold',
 			'italic',
-			'link',
-			'bulletedList',
-			'numberedList',
+			'underline',
+			'strikethrough',
+			'fontBackgroundColor',
+			'fontColor',
+			'fontFamily',
+			'fontSize',
 			'|',
-			'indent',
 			'outdent',
-			'|',
-			'imageUpload',
-			'blockQuote',
+			'indent',
 			'insertTable',
-			'mediaEmbed',
+			'highlight',
+			'numberedList',
+			'bulletedList',
+			'blockQuote',
+			'|',
 			'undo',
 			'redo'
-		]
-	},
-	image: {
-		toolbar: [
-			'imageStyle:full',
-			'imageStyle:side',
-			'|',
-			'imageTextAlternative'
 		]
 	},
 	table: {
